@@ -145,7 +145,7 @@ def send_email(html_body: str) -> None:
     with smtplib.SMTP_SSL("smtp.gmail.com", 465) as server:
         server.login(gmail_address, app_password)
         server.sendmail(gmail_address, recipient_emails.split(","), msg.as_string())
-        print(f"✅ Digest sent to {recipient_email}")
+        print(f"✅ Digest sent to {recipient_emails}")
 
 
 # ── Main ──────────────────────────────────────────────────────────────────────
