@@ -122,7 +122,7 @@ def send_email(html_body: str) -> None:
 
     gmail_address   = os.environ["GMAIL_ADDRESS"]
     app_password    = os.environ["GMAIL_APP_PASSWORD"]
-    recipient_email = os.environ["RECIPIENT_EMAIL"]
+    recipient_emails = os.environ["RECIPIENT_EMAIL"] # comma-separated in the secret
 
     # Wrap in a minimal but readable email shell
     full_html = f"""
@@ -139,12 +139,12 @@ def send_email(html_body: str) -> None:
     msg = MIMEMultipart("alternative")
     msg["Subject"] = subject
     msg["From"]    = gmail_address
-    msg["To"]      = recipient_email
+    msg["To"]      = recipient_emails
     msg.attach(MIMEText(full_html, "html"))
 
     with smtplib.SMTP_SSL("smtp.gmail.com", 465) as server:
         server.login(gmail_address, app_password)
-        server.sendmail(gmail_address, recipient_email, msg.as_string())
+        server.sendmail(gmail_address, recipient_emails(","), msg.as_string())
         print(f"✅ Digest sent to {recipient_email}")
 
 
