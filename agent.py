@@ -29,16 +29,21 @@ from tavily import TavilyClient
 
 SEARCH_QUERIES = [
     "access to justice report 2024 2025 2026",
-    "legal aid funding research",
-    "pro bono legal services news",
-    "rule of law access courts",
-    "legal empowerment low income",
-    "justice gap study findings",
+    "access to justice",
+    "procedural justice",
+    "justice outcomes",
+    "legal aid",
+    "people-centered justice",
+    "justice gap",
+    "legal empowerment",
+    "legal needs",
+    "justice needs",
+    "rule of law"
 ]
 
 ANTHROPIC_MODEL = "claude-haiku-4-5-20251001"   # cheapest, fast enough for digests
 
-MAX_RESULTS_PER_QUERY = 3   # keeps API costs minimal
+MAX_RESULTS_PER_QUERY = 5   # keeps API costs minimal
 
 
 # ── Search ────────────────────────────────────────────────────────────────────
@@ -87,7 +92,7 @@ def summarise_articles(articles: list[dict]) -> str:
         for i, a in enumerate(articles)
     )
 
-    prompt = f"""You are an editor for a daily digest on Access to Justice.
+    prompt = f"""You are an editor for a weekly digest on Access to Justice.
 Below are search results collected today. Your job:
 
 1. Remove duplicates or low-quality results (press releases, paywalled pages with no content).
