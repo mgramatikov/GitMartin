@@ -28,7 +28,7 @@ from tavily import TavilyClient
 # ── Config ────────────────────────────────────────────────────────────────────
 
 SEARCH_QUERIES = [
-    "access to justice report 2024 2025 2026",
+    "access to justice report 2026",
     "access to justice",
     "procedural justice",
     "justice outcomes",
